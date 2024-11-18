@@ -10,7 +10,7 @@ def get_dog_image():
     try:
         response = requests.get("https://dog.ceo/api/breeds/image/random")
         response.raise_for_status()
-        data = response.json()
+        data = response.json() # метод `json()` объекта ответа в библиотеке requests парсит ответ сервера из формата JSON в словарь Python
         return data["message"]
     except Exception as e:
         mb.showerror("Ошибка", f"Возникла ошибка при запросе к API {e}")
@@ -31,8 +31,8 @@ def show_image():
             # new_window = Toplevel(window)
             # new_window.title("Случайное изображение")
             tab = ttk.Frame(notebook)
-            notebook.add(tab, text=f'Картинка №{notebook.index('end')+1}')
-            lb = ttk.Label(tab, image=img)
+            notebook.add(tab, text=f'Картинка №{notebook.index('end')+1}') #  Notebook` элемент управления Tkinter используется для создания вкладок в интерфейсе приложения
+            lb = ttk.Label(tab, image=img) #  image свойство нужно изменить у виджета `Label` в Tkinter, чтобы установить изображение
             lb.pack(padx=10, pady=10)
             lb.image = img
         except Exception as e:
@@ -57,12 +57,12 @@ label.pack(pady=10)
 button = ttk.Button(text="Загрузить изображение", command=prog)
 button.pack(pady=10)
 
-progress = ttk.Progressbar(mode="determinate", length=300)
+progress = ttk.Progressbar(mode="determinate", length=300) # ProgressBar`  компонент Tkinter используется для создания индикатора выполнения задачи
 progress.pack(pady=10)
 
 width_label = ttk.Label(text="Ширина:")
 width_label.pack(side="left", padx=(10, 0))
-width_spinbox = ttk.Spinbox(from_=200, to=500, increment=50, width=5)
+width_spinbox = ttk.Spinbox(from_=200, to=500, increment=50, width=5) # Параметры `from_` и `to` задать начальное и конечное значения для `Spinbox`
 width_spinbox.pack(side="left", padx=(0, 10))
 width_spinbox.set(300)
 
